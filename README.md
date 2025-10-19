@@ -17,5 +17,7 @@ El sistema tiene como proposito **gestionar los productos de un bar**, permitien
  **- PHP**: Logica del servidor y conexion con la base de datos.
 
 **Base de Datos, MySql:** Almacenamiento de productos y tipos.
+
 **Servidor Local, XAMPP:** Entorno de desarrollo con Apache y MySQL.
+
 **Control de versiones, GitHub/Desktop:** Gestion del codigo y control de cambios.
