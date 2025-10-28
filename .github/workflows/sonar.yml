@@ -13,12 +13,24 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Debug: check token presence
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          if [ -z "$SONAR_TOKEN" ]; then
+            echo "❌ SONAR_TOKEN is NOT set"
+            exit 1
+          else
+            echo "✅ SONAR_TOKEN is set"
+          fi
+
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@v2.2.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         with:
           args: >
             -Dsonar.projectKey=BAR
             -Dsonar.sources=.
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_GITHUB }}
-          SONAR_HOST_URL: https://lestobiotic-salvador-unconferred.ngrok-free.dev
+            -Dsonar.login=$SONAR_TOKEN
