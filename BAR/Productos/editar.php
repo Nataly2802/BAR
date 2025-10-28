@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $descripcion = $_POST['descripcion'];
     $id_tipo = $_POST['id_tipo'];
 
-    $conexion->query("UPDATE productos 
+    $conexion->query("UPDATE productos
         SET codigo_producto='$codigo', nombre='$nombre', precio='$precio', marca='$marca', 
             presentacion='$presentacion', descripcion='$descripcion', id_tipo='$id_tipo'
         WHERE codigo_producto='$codigo'");
