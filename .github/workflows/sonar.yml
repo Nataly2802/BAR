@@ -15,10 +15,10 @@ jobs:
 
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@v2.2.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_GITHUB }}
+          SONAR_HOST_URL: https://lestobiotic-salvador-unconferred.ngrok-free.dev
         with:
           args: >
             -Dsonar.projectKey=Proyecto_BAR
             -Dsonar.sources=.
-            -Dsonar.host.url=https://lestobiotic-salvador-unconferred.ngrok-free.dev
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_GITHUB }}
