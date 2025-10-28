@@ -1,5 +1,5 @@
 <?php
-include_once("../conexion.php");
+include_once "../conexion.php";
 $tipos = $conexion->query("SELECT * FROM tipos_productos");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

@@ -1,5 +1,5 @@
 <?php
-include_once("../conexion.php");
+include_once "../conexion.php";
 if($_SERVER["REQUEST_METHOD"] == "POST"){
   $nombre = $_POST["nombre"];
   $conexion->query("INSERT INTO tipos_productos (nombre) VALUES ('$nombre')");

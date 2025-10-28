@@ -1,5 +1,5 @@
 <?php
-include_once("../conexion.php");
+include_once "../conexion.php";
 $result = $conexion->query("SELECT * FROM tipos_productos");
 ?>
 <!DOCTYPE html>
