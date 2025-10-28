@@ -1,5 +1,5 @@
 <?php
-include("../conexion.php");
+include_once("../conexion.php");
 $result = $conexion->query("
 SELECT p.codigo_producto, p.nombre, p.precio, p.marca, p.presentacion, p.descripcion, t.nombre AS tipo
 FROM productos p
