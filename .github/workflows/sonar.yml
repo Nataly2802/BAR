@@ -14,10 +14,8 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Debug: check token presence
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          if [ -z "$SONAR_TOKEN" ]; then
+          if [ -z "${{ secrets.SONAR_TOKEN }}" ]; then
             echo "❌ SONAR_TOKEN is NOT set"
             exit 1
           else
@@ -33,4 +31,3 @@ jobs:
           args: >
             -Dsonar.projectKey=BAR
             -Dsonar.sources=.
-            -Dsonar.login=$SONAR_TOKEN
