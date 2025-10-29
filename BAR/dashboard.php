@@ -15,7 +15,7 @@ if (!isset($_SESSION['usuario'])) {
 </head>
 <body class="fondo-dashboard">
 <nav class="navbar navbar-dark bg-dark mb-4">
-  <div class="container-fluid"> 
+  <div class="container-fluid">
     <a class="navbar-brand">BAR NATALY - Panel</a>
     <a href="cerrar_sesion.php" class="btn btn-gold mb-3">Cerrar sesión</a>
   </div>

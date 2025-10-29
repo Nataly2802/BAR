@@ -1,5 +1,5 @@
 <?php
-namespace BAR\Productos; 
+namespace BAR\Productos;
 
 use App\Conexion;
 

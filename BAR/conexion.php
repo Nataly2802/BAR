@@ -1,7 +1,7 @@
 <?php
 namespace App;
 
-use Config\Config; 
+use Config\Config;
 
 class Conexion {
     public $conexion;
