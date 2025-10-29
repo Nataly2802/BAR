@@ -69,8 +69,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <textarea id="descripcion" name="descripcion" class="form-control" rows="3"></textarea>
   </div>
   <div class="mb-3">
-    <label class="form-label">Tipo de Producto</label>
-    <select name="id_tipo" class="form-select" required>
+    <label for='tipo_de_producto' class="form-label">Tipo de Producto</label>
+    <select id='tipo_de_producto' name="id_tipo" class="form-select" required>
       <option value="">Seleccione un tipo</option>
       <?php while($t = $tipos->fetch_assoc()){ ?>
         <option value="<?= $t['id'] ?>"><?= $t['nombre'] ?></option>

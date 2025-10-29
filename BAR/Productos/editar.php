@@ -82,8 +82,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </div>
 
   <div class="mb-3">
-    <label class="form-label">Tipo de Producto</label>
-    <select name="id_tipo" class="form-select" required>
+    <label for='tipo_de_producto' class="form-label">Tipo de Producto</label>
+    <select id='tipo_de_producto' name="id_tipo" class="form-select" required>
       <?php while($t = $tipos->fetch_assoc()){ ?>
         <option value="<?= $t['id'] ?>" <?= ($t['id'] == $producto['id_tipo']) ? 'selected' : '' ?>>
           <?= $t['nombre'] ?>
