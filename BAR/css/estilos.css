@@ -8,38 +8,90 @@
   --boton-destacado: #8B0000;
   --boton-secundario: #D4AF37;
 }
+
 body {
   background-color: var(--fondo-principal);
   color: var(--texto-principal);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 h1, h2, h3 {
   color: var(--detalle-dorado);
   font-weight: bold;
 }
+
 .card, .table {
   background-color: var(--fondo-tarjeta);
   color: var(--texto-oscuro);
   border-radius: 10px;
   border: 1px solid var(--detalle-dorado);
 }
+
 .btn-bar {
   background-color: var(--boton-destacado);
   color: var(--texto-principal);
   border: none;
-  transition: 0.3s;
+  font-weight: 500;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
 }
+
 .btn-bar:hover {
   background-color: #A52A2A;
+  color: #FFF;
+  box-shadow: 0 0 15px rgba(139, 0, 0, 0.8);
+  transform: scale(1.05);
 }
+
 .btn-gold {
   background-color: var(--boton-secundario);
   color: var(--texto-oscuro);
   border: none;
+  font-weight: 500;
+  box-shadow: 0 4px 8px rgba(212, 175, 55, 0.4);
+  transition: all 0.3s ease;
 }
+
 .btn-gold:hover {
   background-color: #E2C36B;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
+  transform: scale(1.05);
 }
+
+.btn-lightbar {
+  background-color: var(--fondo-tarjeta);
+  color: var(--texto-oscuro);
+  border: 1px solid var(--detalle-dorado);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.btn-lightbar:hover {
+  background-color: #E8D7B6;
+  box-shadow: 0 0 12px rgba(245, 230, 204, 0.8);
+  transform: scale(1.05);
+}
+
+.form-control {
+  border: 2px solid var(--detalle-dorado) !important;
+  border-radius: 8px !important;
+  background-color: #FFF8E7 !important;
+  color: var(--texto-oscuro) !important;
+  box-shadow: none !important;
+  transition: all 0.3s ease-in-out !important;
+}
+
+.form-control:focus {
+  border-color: var(--boton-destacado) !important; 
+  box-shadow: 0 0 8px rgba(139, 0, 0, 0.6) !important; 
+  outline: none !important;
+  background-color: #FFF3E0 !important;
+}
+
+.form-control::placeholder {
+  color: #8B6C63 !important;
+}
+
 .navbar {
   background-color: var(--fondo-secundario);
   border-bottom: 2px solid var(--detalle-dorado);
@@ -53,6 +105,7 @@ a {
 a:hover {
   color: #E2C36B;
 }
+
 .fondo-login {
   background-color: var(--fondo-secundario);
   color: var(--texto-principal);
@@ -81,65 +134,4 @@ a:hover {
 .fondo-tipos {
   background-color: #3B0A0A;
   color: var(--texto-principal);
-}
-
-.btn-bar {
-  background-color: var(--boton-destacado);
-  color: var(--texto-principal);
-  border: none;
-  font-weight: 500;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
-}
-.btn-bar:hover {
-  background-color: #A52A2A;
-  color: #FFF;
-  box-shadow: 0 0 15px rgba(139, 0, 0, 0.8);
-  transform: scale(1.05);
-}
-
-.btn-gold {
-  background-color: var(--boton-secundario);
-  color: var(--texto-oscuro);
-  border: none;
-  font-weight: 500;
-  box-shadow: 0 4px 8px rgba(212, 175, 55, 0.4);
-  transition: all 0.3s ease;
-}
-.btn-gold:hover {
-  background-color: #E2C36B;
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
-  transform: scale(1.05);
-}
-
-.btn-lightbar {
-  background-color: var(--fondo-tarjeta);
-  color: var(--texto-oscuro);
-  border: 1px solid var(--detalle-dorado);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-}
-.btn-lightbar:hover {
-  background-color: #E8D7B6;
-  box-shadow: 0 0 12px rgba(245, 230, 204, 0.8);
-  transform: scale(1.05);
-}
-.form-control {
-  border: 2px solid var(--detalle-dorado) !important;
-  border-radius: 8px !important;
-  background-color: #FFF8E7 !important;
-  color: var(--texto-oscuro) !important;
-  box-shadow: none !important;
-  transition: all 0.3s ease-in-out !important;
-}
-
-.form-control:focus {
-  border-color: var(--boton-destacado) !important; 
-  box-shadow: 0 0 8px rgba(139, 0, 0, 0.6) !important; 
-  outline: none !important;
-  background-color: #FFF3E0 !important;
-}
-
-.form-control::placeholder {
-  color: #8B6C63 !important;
 }
