@@ -1,9 +1,19 @@
 <?php
-include_once "../conexion.php";
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-  $nombre = $_POST["nombre"];
-  $conexion->query("INSERT INTO tipos_productos (nombre) VALUES ('$nombre')");
-  header("Location: index.php");
+use App\Conexion;
+
+$conexionObj = new Conexion();
+$conexion = $conexionObj->conexion;
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nombre = $_POST["nombre"];
+
+    $stmt = $conexion->prepare("INSERT INTO tipos_productos (nombre) VALUES (?)");
+    $stmt->bind_param("s", $nombre);
+    $stmt->execute();
+    $stmt->close();
+
+    header("Location: index.php");
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -19,12 +29,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <h3>Nuevo Tipo de Producto</h3>
 <form method="POST">
   <div class="mb-3">
-    <label  for='nombre' class="form-label">Nombre:</label>
-    <input id='nombre' type="text" name="nombre" class="form-control" required>
+    <label for="nombre" class="form-label">Nombre:</label>
+    <input id="nombre" type="text" name="nombre" class="form-control" required>
   </div>
   <button type="submit" class="btn btn-bar">Guardar</button>
-<a href="index.php" class="btn btn-gold">Volver</a>
-
+  <a href="index.php" class="btn btn-gold">Volver</a>
 </form>
 </div>
 </body>
