@@ -19,8 +19,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <h3>Nuevo Tipo de Producto</h3>
 <form method="POST">
   <div class="mb-3">
-    <label class="form-label">Nombre:</label>
-    <input type="text" name="nombre" class="form-control" required>
+    <label  for='nombre' class="form-label">Nombre:</label>
+    <input id='nombre' type="text" name="nombre" class="form-control" required>
   </div>
   <button type="submit" class="btn btn-bar">Guardar</button>
 <a href="index.php" class="btn btn-gold">Volver</a>

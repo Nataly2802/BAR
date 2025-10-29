@@ -22,8 +22,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <h3>Editar Tipo de Producto</h3>
 <form method="POST">
   <div class="mb-3">
-    <label class="form-label">Nombre</label>
-    <input type="text" name="nombre" class="form-control" value="<?= $tipo['nombre'] ?>" required>
+    <label for='nombre' class="form-label">Nombre</label>
+    <input id='nombre' type="text" name="nombre" class="form-control" value="<?= $tipo['nombre'] ?>" required>
   </div>
   <button class="btn btn-bar">Actualizar</button>
 <a href="index.php" class="btn btn-gold">Volver</a>

@@ -65,8 +65,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
   </div>
   <div class="mb-3">
-    <label class="form-label">Descripción</label>
-    <textarea name="descripcion" class="form-control" rows="3"></textarea>
+    <label for="descripcion" class="form-label">Descripción</label>
+    <textarea id="descripcion" name="descripcion" class="form-control" rows="3"></textarea>
   </div>
   <div class="mb-3">
     <label class="form-label">Tipo de Producto</label>
