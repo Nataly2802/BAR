@@ -1,10 +1,10 @@
 <?php
 
-require_once "../conexion.php";
 use App\Conexion;
 
 $conexionObj = new Conexion();
 $conexion = $conexionObj->conexion;
+
 $tipos = $conexion->query("SELECT * FROM tipos_productos");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
