@@ -1,5 +1,10 @@
 <?php
-include_once "../conexion.php";
+
+require_once "../conexion.php";
+use App\Conexion;
+
+$conexionObj = new Conexion();
+$conexion = $conexionObj->conexion;
 $tipos = $conexion->query("SELECT * FROM tipos_productos");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -35,7 +40,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <input id='nombre' type="text" name="nombre" class="form-control" required>
     </div>
   </div>
-
   <div class="row">
     <div class="col-md-4 mb-3">
       <label for='precio' class="form-label">Precio</label>
@@ -50,12 +54,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <input id='presentacion' type="text" name="presentacion" class="form-control">
     </div>
   </div>
-
   <div class="mb-3">
     <label class="form-label">Descripción</label>
     <textarea name="descripcion" class="form-control" rows="3"></textarea>
   </div>
-
   <div class="mb-3">
     <label class="form-label">Tipo de Producto</label>
     <select name="id_tipo" class="form-select" required>
@@ -65,10 +67,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <?php } ?>
     </select>
   </div>
-
   <button type="submit" class="btn btn-bar">Guardar</button>
-<a href="index.php" class="btn btn-gold">Cancelar</a>
-
+  <a href="index.php" class="btn btn-gold">Cancelar</a>
 </form>
 </div>
 </body>

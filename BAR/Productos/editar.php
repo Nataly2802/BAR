@@ -1,8 +1,14 @@
 <?php
-include_once "../conexion.php";
+
+require_once "../conexion.php";
+use App\Conexion;
+
+$conexionObj = new Conexion();
+$conexion = $conexionObj->conexion;
 
 $codigo = $_GET['id'];
 $producto = $conexion->query("SELECT * FROM productos WHERE codigo_producto = '$codigo'")->fetch_assoc();
+
 $tipos = $conexion->query("SELECT * FROM tipos_productos");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -14,10 +20,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $descripcion = $_POST['descripcion'];
     $id_tipo = $_POST['id_tipo'];
 
-    $conexion->query("UPDATE productos
-        SET codigo_producto='$codigo', nombre='$nombre', precio='$precio', marca='$marca', 
-            presentacion='$presentacion', descripcion='$descripcion', id_tipo='$id_tipo'
-        WHERE codigo_producto='$codigo'");
+    $sql = "UPDATE productos
+            SET codigo_producto='$codigo', nombre='$nombre', precio='$precio', marca='$marca', 
+                presentacion='$presentacion', descripcion='$descripcion', id_tipo='$id_tipo'
+            WHERE codigo_producto='$codigo'";
+    $conexion->query($sql);
 
     header("Location: index.php");
 }
@@ -73,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </div>
 
   <button class="btn btn-bar">Actualizar</button>
-<a href="index.php" class="btn btn-gold">Volver</a>
+  <a href="index.php" class="btn btn-gold">Volver</a>
 </form>
 </div>
 </body>

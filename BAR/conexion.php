@@ -1,9 +1,15 @@
 <?php
+namespace App;
+
 require_once 'C:/config/config.php';
 
-$conexion = new mysqli($db_host, $db_user, $db_pass, $db_name);
+class Conexion {
+    public $conexion;
 
-if ($conexion->connect_error) {
-    die("Error en la conexión: " . $conexion->connect_error);
+    public function __construct() {
+        $this->conexion = new \mysqli($GLOBALS['db_host'], $GLOBALS['db_user'], $GLOBALS['db_pass'], $GLOBALS['db_name']);
+        if ($this->conexion->connect_error) {
+            die("Error en la conexión: " . $this->conexion->connect_error);
+        }
+    }
 }
-?>
