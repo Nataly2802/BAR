@@ -16,11 +16,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $descripcion = $_POST['descripcion'];
     $id_tipo = $_POST['id_tipo'];
 
-    $sql = "INSERT INTO productos (codigo_producto, nombre, precio, marca, presentacion, descripcion, id_tipo)
-            VALUES ('$codigo', '$nombre', '$precio', '$marca', '$presentacion', '$descripcion', '$id_tipo')";
-    $conexion->query($sql);
+    $stmt = $conexion->prepare("
+        INSERT INTO productos (codigo_producto, nombre, precio, marca, presentacion, descripcion, id_tipo)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+    ");
+
+    if ($stmt) {
+        $stmt->bind_param("ssdsssi", $codigo, $nombre, $precio, $marca, $presentacion, $descripcion, $id_tipo);
+        $stmt->execute();
+        $stmt->close();
+    }
+
     header("Location: index.php");
+    exit;
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="es">

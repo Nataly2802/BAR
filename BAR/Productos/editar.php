@@ -12,7 +12,7 @@ $producto = $conexion->query("SELECT * FROM productos WHERE codigo_producto = '$
 $tipos = $conexion->query("SELECT * FROM tipos_productos");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $codigo = $_POST['codigo_producto'];
+    $codigo_nuevo = $_POST['codigo_producto'];
     $nombre = $_POST['nombre'];
     $precio = $_POST['precio'];
     $marca = $_POST['marca'];
@@ -20,14 +20,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $descripcion = $_POST['descripcion'];
     $id_tipo = $_POST['id_tipo'];
 
-    $sql = "UPDATE productos
-            SET codigo_producto='$codigo', nombre='$nombre', precio='$precio', marca='$marca', 
-                presentacion='$presentacion', descripcion='$descripcion', id_tipo='$id_tipo'
-            WHERE codigo_producto='$codigo'";
-    $conexion->query($sql);
+    $stmt = $conexion->prepare("
+        UPDATE productos
+        SET codigo_producto=?, nombre=?, precio=?, marca=?, presentacion=?, descripcion=?, id_tipo=?
+        WHERE codigo_producto=?
+    ");
+
+    if ($stmt) {
+        $stmt->bind_param("ssdsssii", $codigo_nuevo, $nombre, $precio, $marca, $presentacion, $descripcion, $id_tipo, $codigo);
+        $stmt->execute();
+        $stmt->close();
+    }
 
     header("Location: index.php");
+    exit;
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
