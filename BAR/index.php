@@ -27,12 +27,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <h3 class="text-center mb-3">Login BAR</h3>
   <form method="POST">
     <div class="mb-3">
-      <label class="form-label">Usuario</label>
-      <input type="text" class="form-control" name="usuario" required>
+      <label for="usuario" class="form-label">Usuario</label>
+      <input id="usuario" type="text" class="form-control" name="usuario" required>
     </div>
     <div class="mb-3">
-      <label class="form-label">Contraseña</label>
-      <input type="password" class="form-control" name="clave" required>
+      <label for='contraseña' class="form-label">Contraseña</label>
+      <input id='contraseña' type="password" class="form-control" name="clave" required>
     </div>
     <button type="submit" class="btn btn-bar w-100">Ingresar</button>
   </form>
