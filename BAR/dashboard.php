@@ -21,7 +21,7 @@ if (!isset($_SESSION['usuario'])) {
   </div>
 </nav>
 <div class="text-center mt-3 mb-4">
-    <img src="IMG/wine.png" style="width: 150px; height: 180px;">
+    <img alt="Icono de una copa de vino" src="IMG/wine.png" style="width: 150px; height: 180px;">
 </div>
 <div class="container">
   <div class="row text-center">
