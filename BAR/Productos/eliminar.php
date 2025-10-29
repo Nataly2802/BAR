@@ -1,4 +1,5 @@
 <?php
+require_once "../conexion.php"; 
 use App\Conexion;
 
 $conexionObj = new Conexion();
