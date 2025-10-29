@@ -1,6 +1,5 @@
 <?php
 
-require_once "../conexion.php";
 use App\Conexion;
 
 $conexionObj = new Conexion();
@@ -40,8 +39,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: index.php");
     exit;
 }
-
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
