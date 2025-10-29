@@ -1,12 +1,33 @@
 <?php
-include_once "../conexion.php";
-$id = $_GET["id"];
-$tipo = $conexion->query("SELECT * FROM tipos_productos WHERE id=$id")->fetch_assoc();
+use App\Conexion;
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-  $nombre = $_POST["nombre"];
-  $conexion->query("UPDATE tipos_productos SET nombre='$nombre' WHERE id=$id");
-  header("Location: index.php");
+$conexionObj = new Conexion();
+$conexion = $conexionObj->conexion;
+
+if (!isset($_GET["id"])) {
+    header("Location: index.php");
+    exit;
+}
+
+$id = $_GET["id"];
+
+$stmt = $conexion->prepare("SELECT * FROM tipos_productos WHERE id = ?");
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$result = $stmt->get_result();
+$tipo = $result->fetch_assoc();
+$stmt->close();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nombre = $_POST["nombre"];
+
+    $stmt = $conexion->prepare("UPDATE tipos_productos SET nombre = ? WHERE id = ?");
+    $stmt->bind_param("si", $nombre, $id);
+    $stmt->execute();
+    $stmt->close();
+
+    header("Location: index.php");
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -22,11 +43,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <h3>Editar Tipo de Producto</h3>
 <form method="POST">
   <div class="mb-3">
-    <label for='nombre' class="form-label">Nombre</label>
-    <input id='nombre' type="text" name="nombre" class="form-control" value="<?= $tipo['nombre'] ?>" required>
+    <label for="nombre" class="form-label">Nombre</label>
+    <input id="nombre" type="text" name="nombre" class="form-control" value="<?= htmlspecialchars($tipo['nombre']) ?>" required>
   </div>
   <button class="btn btn-bar">Actualizar</button>
-<a href="index.php" class="btn btn-gold">Volver</a>
+  <a href="index.php" class="btn btn-gold">Volver</a>
 </form>
 </div>
 </body>
