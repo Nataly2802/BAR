@@ -7,7 +7,12 @@ $conexionObj = new Conexion();
 $conexion = $conexionObj->conexion;
 
 $codigo = $_GET['id'];
-$producto = $conexion->query("SELECT * FROM productos WHERE codigo_producto = '$codigo'")->fetch_assoc();
+$stmt = $conexion->prepare("SELECT * FROM productos WHERE codigo_producto = ?");
+$stmt->bind_param("s", $codigo);
+$stmt->execute();
+$result = $stmt->get_result();
+$producto = $result->fetch_assoc();
+$stmt->close();
 
 $tipos = $conexion->query("SELECT * FROM tipos_productos");
 
