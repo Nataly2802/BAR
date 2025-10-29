@@ -1,5 +1,9 @@
 <?php
-include_once "../conexion.php";
+use App\Conexion;
+
+$conexionObj = new Conexion();
+$conexion = $conexionObj->conexion;
+
 $result = $conexion->query("SELECT * FROM tipos_productos");
 ?>
 <!DOCTYPE html>
@@ -33,6 +37,5 @@ $result = $conexion->query("SELECT * FROM tipos_productos");
 <?php } ?>
 </table>
 </div>
-
 </body>
 </html>
